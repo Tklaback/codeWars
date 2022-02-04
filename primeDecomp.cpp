@@ -1,3 +1,12 @@
+/*
+    Author: Ty Klabcka
+    Date: December 5, 2021
+
+    Functionality: Given a positive number n > 1 this program finds the prime factor 
+    decomposition of n. The result will be a string with the following form :  
+    "(p1**n1)(p2**n2)...(pk**nk)"with the p(i) in increasing order and n(i) empty 
+    if n(i) is 1.
+*/
 #include <iostream>
 #include <map>
 #include <cmath>
@@ -7,28 +16,29 @@ using namespace std;
 class PrimeDecomp
 {
 public:
-    static std::string factors(int lst);
+    static std::string factors(int lst, map<int, int>);
 };
 
 bool is_prime(int num){
+    /* Return true if num is prime, otherwise return false*/
     if (num < 2)return false;
     else if (num == 2)return true;
     if (num % 2 == 0)return false;
 
     int root = sqrt(num);
 
-    for (int itr=3; itr < root+1; itr += 1){
+    for (int itr=3; itr < root+1; itr++){
         if (num%itr == 0)return false;
     }
     return true;
 }
 
-map<int,int> myMap;
 
-void modifyMap(int lst);
 
-string PrimeDecomp::factors(int lst){
-    modifyMap(lst);
+void modifyMap(int lst, map<int, int> &myMap);
+
+string PrimeDecomp::factors(int lst, map<int, int> myMap){
+    modifyMap(lst, myMap);
     map<int,int>::iterator it;
     string strang;
     for (it = myMap.begin(); it != myMap.end(); it++){
@@ -44,7 +54,7 @@ string PrimeDecomp::factors(int lst){
     return strang;
 }
 
-void modifyMap(int lst){
+void modifyMap(int lst, map<int, int> &myMap){
   if (is_prime(lst)){
       if (myMap.find(lst) == myMap.end()){
         myMap.insert(pair<int,int>(lst, 1));
@@ -57,8 +67,8 @@ void modifyMap(int lst){
       int multiple = sqrt(lst) + 1;
       while (multiple > 0){
         if (lst%multiple==0){
-          modifyMap(multiple);
-          modifyMap(lst/multiple);
+          modifyMap(multiple, myMap);
+          modifyMap(lst/multiple, myMap);
           break;
         }
         else{
@@ -69,5 +79,6 @@ void modifyMap(int lst){
 }
 
 int main(){
-    
+    map<int, int> myMap;
+    cout << PrimeDecomp::factors(7775460, myMap) << endl;
 }
