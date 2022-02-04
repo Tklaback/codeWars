@@ -1,5 +1,3 @@
-#git test foo
-
 #include <iostream>
 
 using namespace std;
