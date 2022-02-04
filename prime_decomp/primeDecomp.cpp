@@ -33,9 +33,10 @@ bool is_prime(int num){
     return true;
 }
 
-void modifyMap(int lst, map<int, int> &myMap);
+void modifyMap(int lst, map<int, int> &myMap); 
 
 string PrimeDecomp::factors(int lst, map<int, int> myMap){
+    /* uses modified map to create a string to display the results neatly */
     modifyMap(lst, myMap);
     map<int,int>::iterator it;
     string strang;
@@ -53,6 +54,8 @@ string PrimeDecomp::factors(int lst, map<int, int> myMap){
 }
 
 void modifyMap(int lst, map<int, int> &myMap){
+  /*If prime and not in map, add to map. Else, recurse until 
+    all multiples up to that number have been evaluated. */
   if (is_prime(lst)){
       if (myMap.find(lst) == myMap.end()){
         myMap.insert(pair<int,int>(lst, 1));
