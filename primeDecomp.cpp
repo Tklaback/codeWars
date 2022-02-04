@@ -33,8 +33,6 @@ bool is_prime(int num){
     return true;
 }
 
-
-
 void modifyMap(int lst, map<int, int> &myMap);
 
 string PrimeDecomp::factors(int lst, map<int, int> myMap){
