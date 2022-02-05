@@ -1,5 +1,5 @@
-#ifndef
-#define
+#ifndef PRIME_D
+#define PRIME_D
 /*
     Author: Ty Klabcka
     Date: December 5, 2021
@@ -18,7 +18,7 @@ using namespace std;
 class PrimeDecomp
 {
 public:
-    static std::string factors(int lst, map<int, int>);
+    static std::string factors(int lst);
 };
 
 bool is_prime(int num){
@@ -37,8 +37,9 @@ bool is_prime(int num){
 
 void modifyMap(int lst, map<int, int> &myMap); 
 
-string PrimeDecomp::factors(int lst, map<int, int> myMap){
+string PrimeDecomp::factors(int lst){
     /* uses modified map to create a string to display the results neatly */
+    map<int, int> myMap;
     modifyMap(lst, myMap);
     map<int,int>::iterator it;
     string strang;
