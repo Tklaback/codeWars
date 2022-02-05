@@ -1,3 +1,5 @@
+#ifndef
+#define
 /*
     Author: Ty Klabcka
     Date: December 5, 2021
@@ -79,7 +81,4 @@ void modifyMap(int lst, map<int, int> &myMap){
     } 
 }
 
-int main(){
-    map<int, int> myMap;
-    cout << PrimeDecomp::factors(7775460, myMap) << endl;
-}
+#endif
