@@ -1,3 +1,5 @@
+#ifndef PRIME_D
+#define PRIME_D
 /*
     Author: Ty Klabcka
     Date: December 5, 2021
@@ -16,7 +18,7 @@ using namespace std;
 class PrimeDecomp
 {
 public:
-    static std::string factors(int lst, map<int, int>);
+    static std::string factors(int lst);
 };
 
 bool is_prime(int num){
@@ -33,9 +35,11 @@ bool is_prime(int num){
     return true;
 }
 
-void modifyMap(int lst, map<int, int> &myMap);
+void modifyMap(int lst, map<int, int> &myMap); 
 
-string PrimeDecomp::factors(int lst, map<int, int> myMap){
+string PrimeDecomp::factors(int lst){
+    /* uses modified map to create a string to display the results neatly */
+    map<int, int> myMap;
     modifyMap(lst, myMap);
     map<int,int>::iterator it;
     string strang;
@@ -53,6 +57,8 @@ string PrimeDecomp::factors(int lst, map<int, int> myMap){
 }
 
 void modifyMap(int lst, map<int, int> &myMap){
+  /*If prime and not in map, add to map. Else, recurse until 
+    all multiples up to that number have been evaluated. */
   if (is_prime(lst)){
       if (myMap.find(lst) == myMap.end()){
         myMap.insert(pair<int,int>(lst, 1));
@@ -76,7 +82,4 @@ void modifyMap(int lst, map<int, int> &myMap){
     } 
 }
 
-int main(){
-    map<int, int> myMap;
-    cout << PrimeDecomp::factors(7775460, myMap) << endl;
-}
+#endif
