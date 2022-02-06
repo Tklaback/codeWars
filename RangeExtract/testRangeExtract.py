@@ -1,7 +1,7 @@
 import unittest
 from rangeExtraction import solution
 
-class testRangeExtraction(unittest.TestCase):
+class TestRangeExtraction(unittest.TestCase):
     """Testing solution function with int arrays of various ranges"""
 
     def test_large_array(self):
